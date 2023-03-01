@@ -1,4 +1,5 @@
 const Order = require('../models/order.model')
+const Client = require('../models/client.model')
 
 async function getAllOrders(req, res) {
   try {
@@ -13,6 +14,8 @@ async function getAllOrders(req, res) {
 async function createOrder(req, res) {
     try {
       const order = await Order.create(req.body)
+	const client = await Client.findByPk(req.params.clientId)
+	  order.setClient(client)
       return res.status(200).json({ message: 'Order created', order: order })
     } catch (error) {
       return res.status(500).send(error.message)

@@ -5,7 +5,7 @@ const Order = sequelize.define(
     'order',
     {
         orderNumber: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false
         },
         dateOrder: {
