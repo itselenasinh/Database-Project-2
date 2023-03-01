@@ -44,10 +44,6 @@ const Client = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false
         },
-        accountManagerName: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         password: {
             type: DataTypes.STRING,
             allowNull: false
