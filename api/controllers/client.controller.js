@@ -1,4 +1,5 @@
 const Client = require('../models/client.model')
+const AccountManager = require('../models/accountManager.model')
 
 async function getAllClients(req, res) {
   try {
@@ -13,6 +14,8 @@ async function getAllClients(req, res) {
 async function createClient(req, res) {
     try {
       const client = await Client.create(req.body)
+	  const accountManager = await AccountManager.findByPk(req.params.accountManagerId)
+	  client.setAccountManager(accountManager)
       return res.status(200).json({ message: 'Client created', client: client })
     } catch (error) {
       return res.status(500).send(error.message)

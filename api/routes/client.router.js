@@ -8,7 +8,7 @@ const {
 } = require('../controllers/client.controller')
 
 router.get('/', getAllClients)
-router.post('/', createClient)
+router.post('/accountManager/:accountManagerId', createClient)
 router.put( '/:id', updateClient)
 router.delete( '/:id', deleteClient)
 

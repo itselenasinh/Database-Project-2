@@ -4,6 +4,6 @@ const clientRouter = require('./client.router')
 const accountManagerRouter = require('./accountManager.router')
 
 router.use('/clients', clientRouter)
-router.use('./accountManagers', accountManagerRouter)
+router.use('/accountManagers', accountManagerRouter)
 
 module.exports = router
