@@ -19,8 +19,7 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 * Create an .env file in your project root folder and add your variables. See .env.sample for assistance.
 
 ### Usage
-??* Run npm start:dev to start the application.??
-
+* Run node index.js to start the application.
 * Connect to the API using Postman on port 3000.
 
 ### API Endpoints
