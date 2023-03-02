@@ -2,37 +2,71 @@
 // README.md
 # Project Support
 ### Introduction
-Project Support is an open source platform that enable users share causes they're passionate about and actively involved with with the hopes of connecting with other users equally interested in working with them on the given cause.
+
+Biormerkalia SL is a B2B company, which is responsible for the distribution of organics products throughout the Canary Islands. Currently, they place orders for around 800 clients and work with around 2000 references among many European suppliers and manufacturers. The idea of this project is to create an application that connects clients directly with the company and can place their own orders, while introducing the Commercial Delegate role, who also has access to place orders.
+
 ### Project Support Features
-* Users can signup and login to their accounts
-* Public (non-authenticated) users can access all causes on the platform
-* Authenticated users can access all causes as well as create a new cause, edit their created cause and also delete what they've created.
+* Clients have user rights. They can login to their accounts, make, modify, view their orders.
+* Account managers have admin rights. They can signup and login into their accounts, make, modify, view their clients' orders. They are creating client accounts.
+* Managers have director rights. They can signup and login into their accounts. They have full access to the orders and full rights - make, view modify, delete all of the orders.
+* Non-authenticated users cannot access.
+
 ### Installation Guide
-* Clone this repository [here](https://github.com/blackdevelopa/ProjectSupport.git).
-* The develop branch is the most stable branch at any given time, ensure you're working from it.
+* Clone this repository [here](https://github.com/itselenasinh/Database-Project-2).
+* The main branch is the most stable branch at any given time, ensure you're working from it.
 * Run npm install to install all dependencies
-* You can either work with the default mLab database or use your locally installed MongoDB. Do configure to your choice in the application entry file.
+* You can work with the database in Dbeaver.
 * Create an .env file in your project root folder and add your variables. See .env.sample for assistance.
+
 ### Usage
-* Run npm start:dev to start the application.
-* Connect to the API using Postman on port 7066.
+* Run node index.js to start the application.
+* Connect to the API using Postman on port 3000.
+
 ### API Endpoints
 | HTTP Verbs | Endpoints | Action |
 | --- | --- | --- |
-| POST | /api/user/signup | To sign up a new user account |
-| POST | /api/user/login | To login an existing user account |
-| POST | /api/causes | To create a new cause |
-| GET | /api/causes | To retrieve all causes on the platform |
-| GET | /api/causes/:causeId | To retrieve details of a single cause |
-| PATCH | /api/causes/:causeId | To edit the details of a single cause |
-| DELETE | /api/causes/:causeId | To delete a single cause |
+| GET | /api/clients | To retrieve all clients |
+| GET | /api/clients/:clientId | To retrieve details of a single client |
+| POST | /api/client/signup | To sign up a new client account |
+| POST | /api/client/login | To login an existing client account |
+| POST | /api/client/signup | To sign up a new client account |
+| PATCH | /api/clients/:clientId | To edit the details of a single client |
+| DELETE | /api/clients/:clientId | To delete a single client |
+
+| GET | /api/accountManagers | To retrieve all Account Managers |
+| GET | /api/accountManagers/:accountManagerId | To retrieve details of a single Account Manager|
+| POST | /api/accountManager/signup | To sign up an existing accountManager's account |
+| POST | /api/accountManager/login | To login an existing accountManager's account |
+| PATCH | /api/accountManagers/:accountManagerId | To edit the details of a single Account Manager|
+| DELETE | /api/accountManagers/:accountManagerId | To delete a single Account Manager|
+
+| POST | /api/manager/signup | To sign up a new Manager account |
+| POST | /api/manager/login | To login an existing Manager account |
+
+| POST | /api/order | To create a new order |
+| GET | /api/order/:orderNumber | To view an existing order |
+| GET | /api/orders | To retrieve all orders |
+| GET | /api/orders/:accountManager | To retrieve all orders of exact Account Manager.
+| PATCH | /api/orders/:orderId | To edit the details of a single order |
+| DELETE | /api/oders/:orderId | To delete a single order |
+
+| GET | /api/products| To retrieve all products |
+| GET | /api/products/:productId | To retrieve details of a single product |
+| POST | /api/product| To modify product |
+| PATCH | /api/produts/:productId | To edit the details of a single product |
+| DELETE | /api/products/:productId | To delete a single product |
+
 ### Technologies Used
 * [NodeJS](https://nodejs.org/) This is a cross-platform runtime environment built on Chrome's V8 JavaScript engine used in running JavaScript codes on the server. It allows for installation and managing of dependencies and communication with databases.
 * [ExpressJS](https://www.expresjs.org/) This is a NodeJS web application framework.
-* [MongoDB](https://www.mongodb.com/) This is a free open source NOSQL document database with scalability and flexibility. Data are stored in flexible JSON-like documents.
-* [Mongoose ODM](https://mongoosejs.com/) This makes it easy to write MongoDB validation by providing a straight-forward, schema-based solution to model to application data.
-### Authors
-* [Black Developa](https://github.com/blackdevelopa)
-* ![alt text](https://avatars0.githubusercontent.com/u/29962968?s=400&u=7753a408ed02e51f88a13a5d11014484bc4d80ee&v=4)
+* [bcrypt](https://www.npmjs.com/package/bcrypt) A library to help you hash passwords.
+* [helmet](https://www.npmjs.com/package/helmet) Helmet helps you secure your Express apps by setting various HTTP headers. 
+* [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) An implementation of JSON Web Tokens.
+* [morgan](https://www.npmjs.com/package/morgan) HTTP request logger middleware for node.js
+* [pg](https://www.npmjs.com/package/pg) Non-blocking PostgreSQL client for Node.js. Pure JavaScript and optional native libpq bindings.
+* [pg-hstore](https://www.npmjs.com/package/pg-hstore) A node package for serializing and deserializing JSON data to hstore format
+* [sequelize](https://sequelize.org/)Sequelize is a modern TypeScript and Node.js ORM for Oracle, Postgres, MySQL, MariaDB, SQLite and SQL Server, and more. 
+* [cors] (https://www.npmjs.com/package/cors) CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+
 ### License
-This project is available for use under the MIT License.
+This project is available for the private usage of Company.
