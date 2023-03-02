@@ -1,26 +1,22 @@
 const { DataTypes } = require('sequelize')
 const { sequelize } = require('../../database')
 
-const Order = sequelize.define(
-    'order',
+const Batch = sequelize.define(
+    'batch',
     {
-        orderNumber: {
+        batchCode: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        dateOrder: {
+        admissionDate: {
             type: DataTypes.DATE,
             allowNull: false
         },
-        tax: {
-            type: DataTypes.INTEGER,
+        expirationDate: {
+            type: DataTypes.DATE,
             allowNull: false
         },
-        groupProduct: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        totalCostOrder: {
+        stockProduct: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
@@ -28,6 +24,6 @@ const Order = sequelize.define(
     { timestamps: false }
 )
 
-module.exports = Order
+module.exports = Batch
 
 
