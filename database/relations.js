@@ -5,6 +5,7 @@ const Batch = require('../api/models/batch.model')
 
 const Product = require('../api/models/product.model')
 
+const Supplier = require('../api/models/supplier.model')
 
 function addRelationsToModels() {
   try {
