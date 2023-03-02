@@ -1,6 +1,7 @@
 const Client = require('../api/models/client.model')
 const AccountManager = require('../api/models/accountManager.model')
 const Order = require('../api/models/order.model')
+const Product = require('../api/models/product.model')
 
 
 function addRelationsToModels() {
