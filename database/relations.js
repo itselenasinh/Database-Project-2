@@ -1,9 +1,13 @@
 const Client = require('../api/models/client.model')
 const AccountManager = require('../api/models/accountManager.model')
 const Order = require('../api/models/order.model')
+<<<<<<< HEAD
 const Batch = require('../api/models/batch.model')
 
 
+=======
+const Supplier = require('../api/models/supplier.model')
+>>>>>>> Supplier
 
 function addRelationsToModels() {
   try {

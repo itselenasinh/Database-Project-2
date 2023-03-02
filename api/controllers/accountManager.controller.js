@@ -10,6 +10,18 @@ async function getAllAccountManagers(req, res) {
   }
 }
 
+async function getOneAccountManager(req, res) {
+	try {
+		const accountManager = await AccountManager.findByPk(req.params.id)
+		if (accountManager) {
+			return res.status(200).json(accountManager)
+		} else {
+			return res.status(404).send('Account Manager not found')
+		}
+	} catch (error) {
+		res.status(500).send(error.message)
+	}
+}
 async function createAccountManager(req, res) {
     try {
       const accountManager = await AccountManager.create(req.body)
@@ -56,6 +68,7 @@ async function deleteAccountManager(req, res) {
 
 module.exports = {
     getAllAccountManagers,
+	getOneAccountManager,
     createAccountManager,
     updateAccountManager,
     deleteAccountManager
