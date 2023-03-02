@@ -11,6 +11,18 @@ async function getAllOrders(req, res) {
   }
 }
 
+async function getOneOrder(req, res) {
+	try {
+		const order = await Order.findByPk(req.params.id)
+		if (order) {
+			return res.status(200).json(order)
+		} else {
+			return res.status(404).send('Order not found')
+		}
+	} catch (error) {
+		res.status(500).send(error.message)
+	}
+}
 async function createOrder(req, res) {
     try {
       const order = await Order.create(req.body)
@@ -59,6 +71,7 @@ async function deleteOrder(req, res) {
 
 module.exports = {
     getAllOrders,
+	getOneOrder,
     createOrder,
     updateOrder,
     deleteOrder
