@@ -14,7 +14,7 @@ const Client = sequelize.define(
             allowNull: false
         },
         nif: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false
         },
         email: {
@@ -45,8 +45,8 @@ const Client = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false
         },
-        mobile: {
-            type: DataTypes.INTEGER,
+        password: {
+            type: DataTypes.STRING,
             allowNull: false
         },
     },

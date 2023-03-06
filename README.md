@@ -30,7 +30,7 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 | POST | /api/client/signup | To sign up a new client account |
 | POST | /api/client/login | To login an existing client account |
 | GET | /api/clients/:accountManager | To retrieve all clients of exact Account Manager.
-| PATCH | /api/clients/:clientId | To edit the details of a single client |
+| PUT | /api/clients/:clientId | To edit the details of a single client |
 | DELETE | /api/clients/:clientId | To delete a single client |
 
 | GET | /api/accountManagers | To retrieve all Account Managers |
@@ -38,7 +38,7 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 | POST | /api/accountManager/signup | To sign up an existing accountManager's account |
 | POST | /api/accountManager/login | To login an existing accountManager's account |
 | GET | /api/accountManager/:client | To retrieve exact Account Manager of a client.
-| PATCH | /api/accountManagers/:accountManagerId | To edit the details of a single Account Manager|
+| PUT | /api/accountManagers/:accountManagerId | To edit the details of a single Account Manager|
 | DELETE | /api/accountManagers/:accountManagerId | To delete a single Account Manager|
 
 | POST | /api/manager/signup | To sign up a new Manager account |
@@ -50,7 +50,7 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 | GET | /api/orders/:accountManager | To retrieve all orders of exact Account Manager.
 | GET | /api/orders/:client | To retrieve all orders of exact client.
 | GET | /api/orders/:product | To retrieve all orders of exact product.
-| PATCH | /api/orders/:orderId | To edit the details of a single order |
+| PUT | /api/orders/:orderId | To edit the details of a single order |
 | DELETE | /api/oders/:orderId | To delete a single order |
 
 | GET | /api/products| To retrieve all products |
@@ -59,21 +59,21 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 | GET | /api/products/:supplier | To retrieve all products of exact supplier.
 | GET | /api/products/:order | To retrieve all products of exact order.
 | GET | /api/products/:batch | To retrieve all products of exact order.
-| PATCH | /api/produts/:productId | To edit the details of a single product |
+| PUT | /api/produts/:productId | To edit the details of a single product |
 | DELETE | /api/products/:productId | To delete a single product |
 
 | GET | /api/suppliers| To retrieve all suppliers |
 | GET | /api/suppliers/:supplierId | To retrieve details of a single supplier |
 | POST | /api/supplier| To create supplier |
 | GET | /api/suppliers/:product | To retrieve supplier of exact product.
-| PATCH | /api/suppliers/:supplierId | To edit the details of a single supplier |
+| PUT | /api/suppliers/:supplierId | To edit the details of a single supplier |
 | DELETE | /api/suppliers/:supplierId | To delete a single supplier |
 
 | GET | /api/batches| To retrieve all batches |
 | GET | /api/batches/:batcheId | To retrieve details of a single batch |
 | POST | /api/batches| To create batch |
 | GET | /api/batches/:product | To retrieve all batches of exact product.
-| PATCH | /api/batches/:batchId | To edit the details of a single batch |
+| PUT | /api/batches/:batchId | To edit the details of a single batch |
 | DELETE | /api/batches/:batchId | To delete a single batch |
 
 ### Technologies Used

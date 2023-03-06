@@ -8,6 +8,10 @@ const AccountManager = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false
         },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         totalClients: {
             type: DataTypes.STRING,
             allowNull: false

@@ -11,7 +11,7 @@ const {
 router.get('/', getAllClients)
 router.get( '/:id', getOneClient)
 router.post('/accountManager/:accountManagerId', createClient)
-router.put( '/:id', updateClient)
+router.put( '/accountManager/:clientId', updateClient)
 router.delete( '/:id', deleteClient)
 
 module.exports = router

@@ -36,6 +36,8 @@ async function createClient(req, res) {
 
 async function updateClient(req, res) {
 	try {
+		// const accountManager = await AccountManager.findByPk(req.params.accountManagerId)
+		// client.setAccountManager(accountManager)
 		const [clientExist, client] = await Client.update(req.body, {
 			returning: true,
 			where: {
