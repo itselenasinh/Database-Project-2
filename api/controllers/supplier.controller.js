@@ -22,6 +22,7 @@ async function getOneSupplier(req, res) {
 		res.status(500).send(error.message)
 	}
 }
+
 async function createSupplier(req, res) {
     try {
       const supplier = await Supplier.create(req.body)
@@ -68,7 +69,7 @@ async function deleteSupplier(req, res) {
 
 module.exports = {
     getAllSuppliers,
-    getOneSupplier,
+	getOneSupplier,
     createSupplier,
     updateSupplier,
     deleteSupplier

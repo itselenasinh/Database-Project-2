@@ -13,10 +13,6 @@ const Supplier = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false
         },
-        producerName: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         totalSales: {
             type: DataTypes.INTEGER,
             allowNull: false

@@ -6,7 +6,9 @@ const Order = sequelize.define(
     {
         orderNumber: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            primaryKey: true,
+            defaultValue: 'Hello'
         },
         dateOrder: {
             type: DataTypes.DATE,

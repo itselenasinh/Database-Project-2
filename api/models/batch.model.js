@@ -6,7 +6,8 @@ const Batch = sequelize.define(
     {
         batchCode: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            primaryKey: true,
         },
         admissionDate: {
             type: DataTypes.DATE,
@@ -14,10 +15,6 @@ const Batch = sequelize.define(
         },
         expirationDate: {
             type: DataTypes.DATE,
-            allowNull: false
-        },
-        stockProduct: {
-            type: DataTypes.INTEGER,
             allowNull: false
         },
     },
