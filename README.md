@@ -65,7 +65,6 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 | GET | /api/suppliers/:supplierId | To retrieve details of a single supplier |
 | POST | /api/supplier| To create supplier |
 | GET | /api/suppliers/:product | To retrieve supplier of exact product.
-| GET | /api/suppliers/:batch | To retrieve supplier of exact batch.
 | PATCH | /api/suppliers/:supplierId | To edit the details of a single supplier |
 | DELETE | /api/suppliers/:supplierId | To delete a single supplier |
 
@@ -73,7 +72,6 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 | GET | /api/batches/:batcheId | To retrieve details of a single batch |
 | POST | /api/batches| To create batch |
 | GET | /api/batches/:product | To retrieve all batches of exact product.
-| GET | /api/batches/:supplier | To retrieve all batches of exact supplier.
 | PATCH | /api/batches/:batchId | To edit the details of a single batch |
 | DELETE | /api/batches/:batchId | To delete a single batch |
 
