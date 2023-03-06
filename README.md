@@ -58,6 +58,7 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 | POST | /api/product| To create product |
 | GET | /api/products/:supplier | To retrieve all products of exact supplier.
 | GET | /api/products/:order | To retrieve all products of exact order.
+| GET | /api/products/:batch | To retrieve all products of exact order.
 | PATCH | /api/produts/:productId | To edit the details of a single product |
 | DELETE | /api/products/:productId | To delete a single product |
 
