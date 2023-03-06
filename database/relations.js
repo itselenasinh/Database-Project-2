@@ -8,23 +8,23 @@ const Product_Order = require('../api/models/product_order.model')
 
 function addRelationsToModels() {
   try {
-    Client.hasMany(Order)
-    Order.belongsTo(Client, {foreignKey: 'orderNumber'})
+    Client.hasMany(Order, {foreignKey: 'clientId'})
+    Order.belongsTo(Client, {foreignKey: 'clientId'})
     
     AccountManager.hasMany(Client)
     Client.belongsTo(AccountManager)
   
-    // AccountManager.hasMany(Order, {foreignKey: 'orderNumber'})
-    // Order.belongsTo(AccountManager, {foreignKey: 'orderNumber'})
+    AccountManager.hasMany(Order, {foreignKey: 'accountManagerId'})
+    Order.belongsTo(AccountManager, {foreignKey: 'accountManagerId'})
 
-    // Product.belongsToMany(Order, { through: Product_Order, foreignKey: 'productId', otherKey: 'orderNumber'})
-    // Order.belongsToMany(Product, { through: Product_Order, foreignKey: 'orderNumber', otherKey: 'productId'})
+    Product.belongsToMany(Order, { through: Product_Order, foreignKey: 'productId', otherKey: 'orderNumber'})
+    Order.belongsToMany(Product, { through: Product_Order, foreignKey: 'orderNumber', otherKey: 'productId'})
 
-    // Supplier.hasMany(Product, {foreignKey: 'productId'})
-    // Product.belongsTo(Supplier, {foreignKey: 'productId'})
+    Supplier.hasMany(Product, {foreignKey: 'supplierCode'})
+    Product.belongsTo(Supplier, {foreignKey: 'supplierCode'})
 
-    // Batch.hasMany(Product, {foreignKey: 'productId'})
-    // Product.belongsTo(Batch, {foreignKey: 'productId'})
+    Batch.hasMany(Product, {foreignKey: 'batchCode'})
+    Product.belongsTo(Batch, {foreignKey: 'batchCode'})
 
     console.log('Relations added to all models')
   } catch (error) {

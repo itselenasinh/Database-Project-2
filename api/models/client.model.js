@@ -1,26 +1,51 @@
 const { DataTypes } = require('sequelize')
 const { sequelize } = require('../../database')
 
-const Order = sequelize.define(
-    'order',
+const Client = sequelize.define(
+    'client',
     {
-        orderNumber: {
+        clientId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true
+        },
+        name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        dateOrder: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        tax: {
+        nif: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        groupProduct: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        totalCostOrder: {
+        mobile: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        owner: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        city: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        address: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        zipCode: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        type: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        mobile: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
@@ -28,6 +53,6 @@ const Order = sequelize.define(
     { timestamps: false }
 )
 
-module.exports = Order
+module.exports = Client
 
 
