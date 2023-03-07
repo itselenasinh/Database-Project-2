@@ -29,52 +29,49 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 | GET | /api/clients/:clientId | To retrieve details of a single client |
 | POST | /api/client/signup | To sign up a new client account |
 | POST | /api/client/login | To login an existing client account |
-| GET | /api/clients/:accountManager | To retrieve all clients of exact Account Manager.
+| GET | /api/clients/accountManager/:accountManagerId | To retrieve all clients of exact Account Manager |
 | PUT | /api/clients/:clientId | To edit the details of a single client |
 | DELETE | /api/clients/:clientId | To delete a single client |
-
+| | | |
 | GET | /api/accountManagers | To retrieve all Account Managers |
 | GET | /api/accountManagers/:accountManagerId | To retrieve details of a single Account Manager|
-| POST | /api/accountManager/signup | To sign up an existing accountManager's account |
-| POST | /api/accountManager/login | To login an existing accountManager's account |
-| GET | /api/accountManager/:client | To retrieve exact Account Manager of a client.
+| POST | /api/accountManager/signup | To sign up a new accountManager's account |
+| POST | /api/accountManager/login | To login an accountManager's account |
+| GET | /api/accountManager/client/:clientId | To retrieve exact Account Manager of a client |
 | PUT | /api/accountManagers/:accountManagerId | To edit the details of a single Account Manager|
-| DELETE | /api/accountManagers/:accountManagerId | To delete a single Account Manager|
-
-| POST | /api/manager/signup | To sign up a new Manager account |
-| POST | /api/manager/login | To login an existing Manager account |
-
+| DELETE | /api/accountManagers/:accountManagerId | To delete a single Account Manager |
+| | | |
 | GET | /api/orders | To retrieve all orders |
 | GET | /api/order/:orderNumber | To view an existing order |
 | POST | /api/order | To create a new order |
-| GET | /api/orders/:accountManager | To retrieve all orders of exact Account Manager.
-| GET | /api/orders/:client | To retrieve all orders of exact client.
-| GET | /api/orders/:product | To retrieve all orders of exact product.
-| PUT | /api/orders/:orderId | To edit the details of a single order |
-| DELETE | /api/oders/:orderId | To delete a single order |
-
+| GET | /api/orders/accountManager/:accountManagerId | To retrieve all orders of exact Account Manager |
+| GET | /api/orders/client/:clientId | To retrieve all orders of exact client |
+| GET | /api/orders/product/:productId | To retrieve all orders of exact product |
+| PUT | /api/orders/:orderNumber | To edit the details of a single order |
+| DELETE | /api/oders/:orderNumber | To delete a single order |
+| | | |
 | GET | /api/products| To retrieve all products |
 | GET | /api/products/:productId | To retrieve details of a single product |
 | POST | /api/product| To create product |
-| GET | /api/products/:supplier | To retrieve all products of exact supplier.
-| GET | /api/products/:order | To retrieve all products of exact order.
-| GET | /api/products/:batch | To retrieve all products of exact order.
+| GET | /api/products/supplier/:supplierCode | To retrieve all products of exact supplier | 
+| GET | /api/products/order/:orderNumber | To retrieve all products of exact order | 
+| GET | /api/products/batch/:batchCode | To retrieve all products of exact batch | 
 | PUT | /api/produts/:productId | To edit the details of a single product |
 | DELETE | /api/products/:productId | To delete a single product |
-
+| | | |
 | GET | /api/suppliers| To retrieve all suppliers |
-| GET | /api/suppliers/:supplierId | To retrieve details of a single supplier |
+| GET | /api/suppliers/:supplierCode | To retrieve details of a single supplier |
 | POST | /api/supplier| To create supplier |
-| GET | /api/suppliers/:product | To retrieve supplier of exact product.
-| PUT | /api/suppliers/:supplierId | To edit the details of a single supplier |
-| DELETE | /api/suppliers/:supplierId | To delete a single supplier |
-
+| GET | /api/suppliers/product/:productId | To retrieve supplier of exact product | 
+| PUT | /api/suppliers/:supplierCode | To edit the details of a single supplier |
+| DELETE | /api/suppliers/:supplierCode | To delete a single supplier |
+| | | |
 | GET | /api/batches| To retrieve all batches |
-| GET | /api/batches/:batcheId | To retrieve details of a single batch |
+| GET | /api/batches/:batcheCode | To retrieve details of a single batch |
 | POST | /api/batches| To create batch |
-| GET | /api/batches/:product | To retrieve all batches of exact product.
-| PUT | /api/batches/:batchId | To edit the details of a single batch |
-| DELETE | /api/batches/:batchId | To delete a single batch |
+| GET | /api/batches/product/:productId | To retrieve all batches of exact product |
+| PUT | /api/batches/:batchCode | To edit the details of a single batch |
+| DELETE | /api/batches/:batchCode | To delete a single batch |
 
 ### Technologies Used
 * [NodeJS](https://nodejs.org/) This is a cross-platform runtime environment built on Chrome's V8 JavaScript engine used in running JavaScript codes on the server. It allows for installation and managing of dependencies and communication with databases.
@@ -90,3 +87,18 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 
 ### License
 This project is available for the private usage of Company.
+
+### User Endpoints
+
+METHOD | ENDPOINT         | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                               | RETURNS
+-------|------------------|-------|------|--------------------|-------------------------------------------------|--------------------
+GET    | /user/profile    | YES   | user | Get Own Profile    |                                                 | {user}
+GET    | /user            | YES   | admin | Get All Users     | query params                                    | [users]
+POST   | /user/search     | YES   | user | Search One User    | body (userName)                                 | {id, userName, tweets, friends}
+GET    | /user/:id       | YES   | admin | Get One User       |                                                 | {user}
+PUT    | /user/profile    | YES   | user | Update Own Profile |  `userName`, `email`                            | 'Profile updated'
+PUT    | /user/:id       | YES   | admin | Update One User     |   `userName`, `email`, `password`              | 'Profile updated'
+PUT    | /user/friends/:id | YES   | user | Add Friend       |                                                      | 'Friend Added'
+PUT    | /user/friends/:id/remove | YES   | user | Remove Friend   |                                                      | 'Friend Removed'
+DELETE | /user/profile | YES   | user | Delete Own Profile   |                                                      | 'Profile Removed'
+DELETE | /user/:id | YES   | admin | Delete One Profile   |                                                      | 'Profile Removed'
