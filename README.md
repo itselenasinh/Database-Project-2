@@ -50,6 +50,8 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 
 ### Orders
 
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
 | GET | /api/orders | To retrieve all orders |
 | GET | /api/order/:orderNumber | To view an existing order |
 | POST | /api/order | To create a new order |
@@ -61,6 +63,8 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 
 ### Products
 
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
 | GET | /api/products| To retrieve all products |
 | GET | /api/products/:productId | To retrieve details of a single product |
 | POST | /api/product| To create product |
@@ -72,6 +76,8 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 
 ### Suppliers
 
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
 | GET | /api/suppliers| To retrieve all suppliers |
 | GET | /api/suppliers/:supplierCode | To retrieve details of a single supplier |
 | POST | /api/supplier| To create supplier |
@@ -81,6 +87,8 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 
 ### Batches
 
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
 | GET | /api/batches| To retrieve all batches |
 | GET | /api/batches/:batcheCode | To retrieve details of a single batch |
 | POST | /api/batches| To create batch |
