@@ -6,8 +6,8 @@ const Client = sequelize.define(
     {
         clientId: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         name: {
             type: DataTypes.STRING,
@@ -19,7 +19,14 @@ const Client = sequelize.define(
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: {
+                    args: true,
+                    msg: 'Invalid email format'
+                }
+            },
         },
         mobile: {
             type: DataTypes.INTEGER,

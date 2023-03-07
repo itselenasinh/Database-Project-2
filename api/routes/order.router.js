@@ -8,10 +8,12 @@ const {
     deleteOrder
 } = require('../controllers/order.controller')
 
-router.get('/', getAllOrders)
-router.get( '/:id', getOneOrder)
+const { checkAuthAccountManager } = require('../utils')
+
+router.get('/', checkAuthAccountManager, getAllOrders)
+router.get( '/:id', checkAuthAccountManager, getOneOrder)
 router.post('/client/:clientId', createOrder)
-router.put( '/:id', updateOrder)
-router.delete( '/:id', deleteOrder)
+router.put( '/:id', checkAuthAccountManager, updateOrder)
+router.delete( '/:id', checkAuthAccountManager, deleteOrder)
 
 module.exports = router

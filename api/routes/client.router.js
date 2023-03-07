@@ -1,5 +1,7 @@
 const router = require('express').Router()
 
+const { checkAuthAccountManager } = require('../utils')
+
 const {
   getAllClients,
 	getOneClient,
@@ -8,10 +10,10 @@ const {
   deleteClient
 } = require('../controllers/client.controller')
 
-router.get('/', getAllClients)
-router.get( '/:id', getOneClient)
-router.post('/accountManager/:accountManagerId', createClient)
-router.put( '/accountManager/:clientId', updateClient)
-router.delete( '/:id', deleteClient)
+router.get('/', checkAuthAccountManager, getAllClients)
+router.get( '/:id', checkAuthAccountManager, getOneClient)
+router.post('/accountManager/:accountManagerId', checkAuthAccountManager, createClient)
+router.put( '/accountManager/:clientId', checkAuthAccountManager, updateClient)
+router.delete( '/:id', checkAuthAccountManager, deleteClient)
 
 module.exports = router

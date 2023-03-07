@@ -8,10 +8,12 @@ const {
   deleteBatch
 } = require('../controllers/batch.controller')
 
-router.get('/', getAllBatches)
-router.get('/:id', getOneBatch)
-router.post('/', createBatch)
-router.put( '/:id', updateBatch)
-router.delete( '/:id', deleteBatch)
+const { checkAuthAccountManager } = require('../utils/index')
+
+router.get('/', checkAuthAccountManager, getAllBatches)
+router.get('/:id', checkAuthAccountManager, getOneBatch)
+router.post('/', checkAuthAccountManager, createBatch)
+router.put( '/:id', checkAuthAccountManager, updateBatch)
+router.delete( '/:id', checkAuthAccountManager, deleteBatch)
 
 module.exports = router

@@ -10,15 +10,22 @@ const AccountManager = sequelize.define(
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: {
+                    args: true,
+                    msg: 'Invalid email format'
+                }
+            },
         },
         totalClients: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         totalSales: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         password: {
             type: DataTypes.STRING,

@@ -1,28 +1,31 @@
 # Database-Project-2
 // README.md
 # Project Support
-### Introduction
+## Introduction
 
 Biormerkalia SL is a B2B company, which is responsible for the distribution of organics products throughout the Canary Islands. Currently, they place orders for around 800 clients and work with around 2000 references among many European suppliers and manufacturers. The idea of this project is to create an application that connects clients directly with the company and can place their own orders, while introducing the Commercial Delegate role, who also has access to place orders.
 
-### Project Support Features
+## Project Support Features
 * Clients have user rights. They can login to their accounts, make, modify, view their orders.
 * Account managers have admin rights. They can signup and login into their accounts, make, modify, view their clients' orders. They are creating client accounts.
 * Managers have director rights. They can signup and login into their accounts. They have full access to the orders and full rights - make, view modify, delete all of the orders.
 * Non-authenticated users cannot access.
 
-### Installation Guide
+## Installation Guide
 * Clone this repository [here](https://github.com/itselenasinh/Database-Project-2).
 * The main branch is the most stable branch at any given time, ensure you're working from it.
 * Run npm install to install all dependencies
 * You can work with the database in Dbeaver.
 * Create an .env file in your project root folder and add your variables. See .env.sample for assistance.
 
-### Usage
+## Usage
 * Run node index.js to start the application.
 * Connect to the API using Postman on port 3000.
 
-### API Endpoints
+## API Endpoints
+
+### Clients
+
 | HTTP Verbs | Endpoints | Action |
 | --- | --- | --- |
 | GET | /api/clients | To retrieve all clients |
@@ -32,7 +35,9 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 | GET | /api/clients/accountManager/:accountManagerId | To retrieve all clients of exact Account Manager |
 | PUT | /api/clients/:clientId | To edit the details of a single client |
 | DELETE | /api/clients/:clientId | To delete a single client |
-| | | |
+
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
 | GET | /api/accountManagers | To retrieve all Account Managers |
 | GET | /api/accountManagers/:accountManagerId | To retrieve details of a single Account Manager|
 | POST | /api/accountManager/signup | To sign up a new accountManager's account |

@@ -1,14 +1,16 @@
 const Client = require('../models/client.model')
 const AccountManager = require('../models/accountManager.model')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 async function getAllClients(req, res) {
-  try {
-    console.log(req.headers)
-    const clients = await Client.findAll()
-    return !clients ? res.status(404).send('No clients found') : res.status(200).json(clients)
-  } catch (error) {
-    return res.status(500).send(error.message)
-  }
+	try {
+		console.log(req.headers)
+		const clients = await Client.findAll()
+		return !clients ? res.status(404).send('No clients found') : res.status(200).json(clients)
+	} catch (error) {
+		return res.status(500).send(error.message)
+	}
 }
 
 async function getOneClient(req, res) {
@@ -24,15 +26,29 @@ async function getOneClient(req, res) {
 	}
 }
 async function createClient(req, res) {
-    try {
-      const client = await Client.create(req.body)
-	  const accountManager = await AccountManager.findByPk(req.params.accountManagerId)
-	  client.setAccountManager(accountManager)
-      return res.status(200).json({ message: 'Client created', client: client })
-    } catch (error) {
-      return res.status(500).send(error.message)
-    }
-  }
+	try {
+		const hashed_pwd = bcrypt.hashSync(req.body.password, 10);
+		Client.create({
+			name: req.body.name,
+			nif: req.body.nif,
+			email: req.body.email,
+			mobile: req.body.mobile,
+			owner: req.body.owner,
+			city: req.body.city,
+			address: req.body.address,
+			zipCode: req.body.zipCode,
+			type: req.body.type,
+			password: hashed_pwd,
+		})
+			.then(async(client) => {
+				const accountManager = await AccountManager.findByPk(req.params.accountManagerId)
+				client.setAccountManager(accountManager)
+				return res.status(200).json({ message: 'Client created'})
+			})
+	} catch (err) {
+		res.status(403).json(err.message)
+	}
+}
 
 async function updateClient(req, res) {
 	try {
@@ -42,7 +58,7 @@ async function updateClient(req, res) {
 				id: req.params.id,
 			},
 		})
-        if (clientExist !== 0) {
+		if (clientExist !== 0) {
 			return res.status(200).json({ message: 'Client updated', client: client })
 		} else {
 			return res.status(404).send('Client not found')
@@ -70,9 +86,9 @@ async function deleteClient(req, res) {
 }
 
 module.exports = {
-    getAllClients,
+	getAllClients,
 	getOneClient,
-    createClient,
-    updateClient,
-    deleteClient
-  }
+	createClient,
+	updateClient,
+	deleteClient
+}
