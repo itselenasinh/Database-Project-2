@@ -28,7 +28,7 @@ async function getOneClient(req, res) {
 async function createClient(req, res) {
 	try {
 		const hashed_pwd = bcrypt.hashSync(req.body.password, 10);
-		Client.create({
+		const client = await Client.create({
 			name: req.body.name,
 			nif: req.body.nif,
 			email: req.body.email,
@@ -40,11 +40,33 @@ async function createClient(req, res) {
 			type: req.body.type,
 			password: hashed_pwd,
 		})
-			.then(async(client) => {
-				const accountManager = await AccountManager.findByPk(req.params.accountManagerId)
-				client.setAccountManager(accountManager)
-				return res.status(200).json({ message: 'Client created'})
-			})
+
+		const accountManager = await AccountManager.findByPk(req.params.accountManagerId)
+		client.setAccountManager(accountManager)
+		accountManager.addClient(client)
+		return res.status(200).json({ message: 'Client created' })
+
+	} catch (err) {
+		res.status(403).json(err.message)
+	}
+}
+
+async function clientLogin(req, res) {
+	try {
+		const client = await Client.findOne({ where: { email: req.body.email } })
+		if (!client) return res.status(404).json({ error: 'wrong email or password' })
+		bcrypt.compare(req.body.password, client.password, (err, result) => {
+			if (!result) {
+				return res.json({ error: `wrong email or password` })
+			}
+			const client_data = { name: client.name, email: client.email }
+			const token = jwt.sign(
+				client_data,
+				process.env.SECRETCN,
+				{ expiresIn: '1h' }
+			)
+			return res.status(200).json({ token: token, ...client_data })
+		})
 	} catch (err) {
 		res.status(403).json(err.message)
 	}
@@ -89,6 +111,7 @@ module.exports = {
 	getAllClients,
 	getOneClient,
 	createClient,
+	clientLogin,
 	updateClient,
 	deleteClient
 }
