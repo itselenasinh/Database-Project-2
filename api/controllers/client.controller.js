@@ -40,10 +40,8 @@ async function createClient(req, res) {
 			type: req.body.type,
 			password: hashed_pwd,
 		})
-
 		const accountManager = await AccountManager.findByPk(req.params.accountManagerId)
 		client.setAccountManager(accountManager)
-		accountManager.addClient(client)
 		return res.status(200).json({ message: 'Client created' })
 
 	} catch (err) {

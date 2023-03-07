@@ -24,6 +24,18 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 
 ## API Endpoints
 
+### Account Managers
+
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
+| GET | /api/accountManagers | To retrieve all Account Managers |
+| GET | /api/accountManagers/:accountManagerId | To retrieve details of a single Account Manager|
+| POST | /api/accountManager/signup | To sign up a new accountManager's account |
+| POST | /api/accountManager/login | To login an accountManager's account |
+| GET | /api/accountManager/client/:clientId | To retrieve exact Account Manager of a client |
+| PUT | /api/accountManagers/:accountManagerId | To edit the details of a single Account Manager|
+| DELETE | /api/accountManagers/:accountManagerId | To delete a single Account Manager |
+
 ### Clients
 
 | HTTP Verbs | Endpoints | Action |
@@ -36,16 +48,8 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 | PUT | /api/clients/:clientId | To edit the details of a single client |
 | DELETE | /api/clients/:clientId | To delete a single client |
 
-| HTTP Verbs | Endpoints | Action |
-| --- | --- | --- |
-| GET | /api/accountManagers | To retrieve all Account Managers |
-| GET | /api/accountManagers/:accountManagerId | To retrieve details of a single Account Manager|
-| POST | /api/accountManager/signup | To sign up a new accountManager's account |
-| POST | /api/accountManager/login | To login an accountManager's account |
-| GET | /api/accountManager/client/:clientId | To retrieve exact Account Manager of a client |
-| PUT | /api/accountManagers/:accountManagerId | To edit the details of a single Account Manager|
-| DELETE | /api/accountManagers/:accountManagerId | To delete a single Account Manager |
-| | | |
+### Orders
+
 | GET | /api/orders | To retrieve all orders |
 | GET | /api/order/:orderNumber | To view an existing order |
 | POST | /api/order | To create a new order |
@@ -54,7 +58,9 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 | GET | /api/orders/product/:productId | To retrieve all orders of exact product |
 | PUT | /api/orders/:orderNumber | To edit the details of a single order |
 | DELETE | /api/oders/:orderNumber | To delete a single order |
-| | | |
+
+### Products
+
 | GET | /api/products| To retrieve all products |
 | GET | /api/products/:productId | To retrieve details of a single product |
 | POST | /api/product| To create product |
@@ -63,14 +69,18 @@ Biormerkalia SL is a B2B company, which is responsible for the distribution of o
 | GET | /api/products/batch/:batchCode | To retrieve all products of exact batch | 
 | PUT | /api/produts/:productId | To edit the details of a single product |
 | DELETE | /api/products/:productId | To delete a single product |
-| | | |
+
+### Suppliers
+
 | GET | /api/suppliers| To retrieve all suppliers |
 | GET | /api/suppliers/:supplierCode | To retrieve details of a single supplier |
 | POST | /api/supplier| To create supplier |
 | GET | /api/suppliers/product/:productId | To retrieve supplier of exact product | 
 | PUT | /api/suppliers/:supplierCode | To edit the details of a single supplier |
 | DELETE | /api/suppliers/:supplierCode | To delete a single supplier |
-| | | |
+
+### Batches
+
 | GET | /api/batches| To retrieve all batches |
 | GET | /api/batches/:batcheCode | To retrieve details of a single batch |
 | POST | /api/batches| To create batch |
