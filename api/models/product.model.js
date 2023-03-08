@@ -14,7 +14,7 @@ const Product = sequelize.define(
             allowNull: false
         },
         eanCode: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT,
             allowNull: false
         },
         stockProduct: {
@@ -22,7 +22,7 @@ const Product = sequelize.define(
             allowNull: false
         },
         priceProduct: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: false
         },
         tax: {

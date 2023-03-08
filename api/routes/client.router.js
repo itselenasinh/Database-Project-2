@@ -15,7 +15,7 @@ router.get('/', checkAuthAccountManager, getAllClients)
 router.get( '/:id', checkAuthAccountManager, getOneClient)
 router.post('/accountManager/:accountManagerId', checkAuthAccountManager, createClient)
 router.post('/clientLogin', clientLogin)
-router.put( '/accountManager/:clientId', checkAuthAccountManager, updateClient)
+router.put( '/:id', checkAuthAccountManager, updateClient)
 router.delete( '/:id', checkAuthAccountManager, deleteClient)
 
 module.exports = router

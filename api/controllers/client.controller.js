@@ -75,7 +75,7 @@ async function updateClient(req, res) {
 		const [clientExist, client] = await Client.update(req.body, {
 			returning: true,
 			where: {
-				id: req.params.id,
+				clientId: req.params.id,
 			},
 		})
 		if (clientExist !== 0) {
@@ -92,7 +92,7 @@ async function deleteClient(req, res) {
 	try {
 		const client = await Client.destroy({
 			where: {
-				id: req.params.id,
+				clientId: req.params.id,
 			},
 		})
 		if (client) {

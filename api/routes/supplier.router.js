@@ -11,9 +11,9 @@ const {
 const { checkAuthAccountManager } = require('../utils')
 
 router.get('/', checkAuthAccountManager, getAllSuppliers)
-router.get( '/:id', checkAuthAccountManager, getOneSupplier)
+router.get('/:id', checkAuthAccountManager, getOneSupplier)
 router.post('/', checkAuthAccountManager, createSupplier)
-router.put( '/:id', checkAuthAccountManager, updateSupplier)
-router.delete( '/:id', checkAuthAccountManager, deleteSupplier)
+router.put('/:id', checkAuthAccountManager, updateSupplier)
+router.delete('/:id', checkAuthAccountManager, deleteSupplier)
 
 module.exports = router

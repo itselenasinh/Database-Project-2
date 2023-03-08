@@ -27,8 +27,6 @@ async function getOneProduct(req, res) {
 async function createProduct(req, res) {
     try {
       const product = await Product.create(req.body)
-	  const supplier = await Supplier.findByPk(req.params.supplierId)
-	  product.setSupplier(supplier)
       return res.status(200).json({ message: 'Product created', product: product })
     } catch (error) {
       return res.status(500).send(error.message)
@@ -40,7 +38,7 @@ async function updateProduct(req, res) {
 		const [productExist, product] = await Product.update(req.body, {
 			returning: true,
 			where: {
-				id: req.params.id,
+				productId: req.params.id,
 			},
 		})
         if (productExist !== 0) {
@@ -57,7 +55,7 @@ async function deleteProduct(req, res) {
 	try {
 		const product = await Product.destroy({
 			where: {
-				id: req.params.id,
+				productId: req.params.id,
 			},
 		})
 		if (product) {

@@ -12,7 +12,7 @@ const { checkAuthAccountManager } = require('../utils')
 
 router.get('/', checkAuthAccountManager, getAllOrders)
 router.get( '/:id', checkAuthAccountManager, getOneOrder)
-router.post('/client/:clientId', createOrder)
+router.post('/', createOrder)
 router.put( '/:id', checkAuthAccountManager, updateOrder)
 router.delete( '/:id', checkAuthAccountManager, deleteOrder)
 

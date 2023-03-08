@@ -17,12 +17,8 @@ const Order = sequelize.define(
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        groupProduct: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         totalCostOrder: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: false
         },
     },
