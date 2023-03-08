@@ -6,7 +6,7 @@ const Product_Order = sequelize.define(
     {
         QTY: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
     },
     { timestamps: false }
