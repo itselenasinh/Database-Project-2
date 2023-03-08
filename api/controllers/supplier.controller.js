@@ -37,7 +37,7 @@ async function updateSupplier(req, res) {
 		const [supplierExist, supplier] = await Supplier.update(req.body, {
 			returning: true,
 			where: {
-				id: req.params.id,
+				supplierCode: req.params.id,
 			},
 		})
         if (supplierExist !== 0) {
@@ -54,7 +54,7 @@ async function deleteSupplier(req, res) {
 	try {
 		const supplier = await Supplier.destroy({
 			where: {
-				id: req.params.id,
+				supplierCode: req.params.id,
 			},
 		})
 		if (supplier) {

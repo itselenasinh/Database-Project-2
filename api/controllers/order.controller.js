@@ -26,7 +26,7 @@ async function getOneOrder(req, res) {
 async function createOrder(req, res) {
     try {
       const order = await Order.create(req.body)
-	const client = await Client.findByPk(req.params.clientId)
+	const client = await Client.findByPk(req.params.id)
 	  order.setClient(client)
       return res.status(200).json({ message: 'Order created', order: order })
     } catch (error) {
@@ -39,7 +39,7 @@ async function updateOrder(req, res) {
 		const [orderExist, order] = await Order.update(req.body, {
 			returning: true,
 			where: {
-				id: req.params.id,
+				orderNumber: req.params.id,
 			},
 		})
         if (orderExist !== 0) {
@@ -56,7 +56,7 @@ async function deleteOrder(req, res) {
 	try {
 		const order = await Order.destroy({
 			where: {
-				id: req.params.id,
+				orderNumber: req.params.id,
 			},
 		})
 		if (order) {

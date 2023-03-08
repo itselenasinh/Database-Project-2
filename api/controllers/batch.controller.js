@@ -37,7 +37,7 @@ async function updateBatch(req, res) {
 		const [batchExist, batch] = await Batch.update(req.body, {
 			returning: true,
 			where: {
-				id: req.params.id,
+				batchCode: req.params.id,
 			},
 		})
         if (batchExist !== 0) {
@@ -54,7 +54,7 @@ async function deleteBatch(req, res) {
 	try {
 		const batch = await Batch.destroy({
 			where: {
-				id: req.params.id,
+				batchCode: req.params.id,
 			},
 		})
 		if (batch) {
