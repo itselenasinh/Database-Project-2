@@ -49,13 +49,24 @@ async function createOrder(req, res) {
 
 async function updateOrder(req, res) {
 	try {
-		const [orderExist, order] = await Order.update(req.body, {
-			returning: true,
-			where: {
-				orderNumber: req.params.id,
-			},
-		})
-		if (orderExist !== 0) {
+		const order = await Order.findByPk(req.params.id)
+		if (order) {
+			await order.update(req.body, {
+				returning: true,
+				fields: ["orderNumber", "dateOrder", "tax", "totalCostOrder", "clientId", "accountManagerId"]
+			})
+			const productsQTYs = req.body.productsQTYs
+			for (let i = 0; i < productsQTYs.length; i++) {
+				await order.addProduct(productsQTYs[i].productId)
+				const productOrder = await Product_Order.findOne({
+					where: {
+						productId: productsQTYs[i].productId,
+						orderNumber: req.params.id
+					}
+				})
+				productOrder.QTY = productsQTYs[i].QTY
+				await productOrder.save()
+			}
 			return res.status(200).json({ message: 'Order updated', order: order })
 		} else {
 			return res.status(404).send('Order not found')
